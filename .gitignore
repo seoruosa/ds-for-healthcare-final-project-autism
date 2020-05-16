@@ -2,3 +2,4 @@ add-key.sh
 dataset/childhealthdata/
 videos/
 *.zip
+credentials.py
