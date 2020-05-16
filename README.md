@@ -2,3 +2,6 @@
 Final project about autism for discipline of Data Science and Visualization in Healthcare
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/seoruosa/ds-for-healthcare-final-project-autism/master)
+
+### Links
+* https://blog.ouseful.info/2019/12/10/accessing-mybinder-kernels-remotely-from-ipython-magic-and-from-vs-code/
