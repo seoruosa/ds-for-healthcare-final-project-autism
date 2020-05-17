@@ -3,3 +3,4 @@ dataset/childhealthdata/
 videos/
 *.zip
 credentials.py
+dataset/child-health-data/
