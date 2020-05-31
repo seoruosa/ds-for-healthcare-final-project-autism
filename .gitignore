@@ -4,3 +4,4 @@ videos/
 *.zip
 credentials.py
 dataset/child-health-data/
+.ipynb_checkpoints/
