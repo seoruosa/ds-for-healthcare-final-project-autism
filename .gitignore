@@ -5,3 +5,6 @@ videos/
 credentials.py
 dataset/child-health-data/
 .ipynb_checkpoints/
+**/2017-2018_description_columns.csv
+data/processed/*
+.vscode
