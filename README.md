@@ -14,3 +14,8 @@ Return to consider modifications
 
 #### Github configurations to use Google Colab
 * https://towardsdatascience.com/google-drive-google-colab-github-dont-just-read-do-it-5554d5824228
+
+
+### GEPHI: Instalation and running
+    docker pull dit4c/dit4c-container-gephi
+    docker run -p 8080:8080 dit4c/dit4c-container-gephi
