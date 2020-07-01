@@ -1,1 +1,3 @@
-# ds-for-healthcare-final-project-autism
+#  Pasta Assets
+
+Nesta pasta estão todas as imagens utilizadas no projeto. 
