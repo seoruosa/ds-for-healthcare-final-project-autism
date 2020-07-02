@@ -62,7 +62,7 @@ Além disso, para lidar com o desbalanceamento, testamos a utilização de *over
 
 |feature selection                    |classifier                |precision*|recall*   |f1-score*|Oversampling|
 |-------------------------------------|--------------------------|----------|----------|---------|------------|
-|Random Forest***                     |Support Vector Machine    |0.82      |0.62      |0.67     |N           |
+|Random Forest(\*\*\*)                      |Support Vector Machine    |0.82      |0.62      |0.67     |N           |
 |Decision Tree Classifier(\*\*\*)     |Support Vector Machine    |0.49      |0.50      |0.49     |N           |
 |Decision Tree Classifier(\*\*)       |Logistic Regression       |0.79      |0.64      |0.69     |N           |
 |**Decision Tree Classifier(\*\*\*)** |**Logistic Regression**   |**0.73**  |**0.67**  |**0.69** |**N**       |
@@ -71,10 +71,12 @@ Além disso, para lidar com o desbalanceamento, testamos a utilização de *over
 |Random Forest(\*\*\*)                |Support Vector Machine    |0.81      |0.62      |0.67     |Y           |
 
 </center>
-(\*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
+(*) Macro average [13]
 
 (\*\*) with threshold value
+
 (\*\*\*) with threshold value and max_features 
+
 (\*\*\*\*) using balanced class weight for training score
 
 Os valores de *f1-score* que os modelos desenvolvidos obtiveram, mostram que nenhum se destacou positivamente, escolhemos, então, para aprofundarmos as análises o ressaltado em **negrito**.  O treinamento do modelo via *Decision Tree Classifier* e *Logistic Regression* utilizou as perguntas do NSCH abaixo.
@@ -176,4 +178,6 @@ Agradecemos também à Juliana Tortorelli, psicóloga, pelas referências locais
 
 [11] Robins DL, Fein D, Barton ML, Green JA. "The Modified Checklist for Autism in Toddlers: an initial study investigating the early detection of autism and pervasive developmental disorders." *J Autism Dev Disord* 31(2) (2001): 131-44.
 
-[12] https://www.jeremyjordan.me/imbalanced-data/. Visited [02/07/2020].
+[12] [Learning from imbalanced data](https://www.jeremyjordan.me/imbalanced-data/). Visited [02/07/2020].
+
+[13] [Scikit Learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score).  Visited [02/07/2020].
