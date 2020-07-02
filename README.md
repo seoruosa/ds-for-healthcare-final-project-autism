@@ -78,10 +78,11 @@ Além disso, para lidar com o desbalanceamento, testamos a utilização de overs
 |Random Forest(\*\*\*)                |Support Vector Machine    |0.81      |0.62      |0.67     |Y           |
 
 </center>
-(\*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
-(\*\*) with threshold value
-(\*\*\*) with threshold value and max_features 
-(\*\*\*\*) using balanced class weight for training score
+(*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
+
+(\**) with threshold value
+(***) with threshold value and max_features 
+(\****) using balanced class weight for training score
 
 Os valores de *f1-score* que os modelos desenvolvidos obtiveram, mostram que nenhum se destacou positivamente, escolhemos, então, para aprofundarmos as análises o ressaltado em **negrito**.  O treinamento do modelo via *Decision Tree Classifier* e *Logistic Regression* utilizou as perguntas do NSCH abaixo.
 
