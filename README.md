@@ -1,5 +1,5 @@
 # Bem-vindo!
-Você está no repositório referente ao projeto final com o tema de **diagnóstico de autismo** da matéria de Ciência e Visualização de Dados em Saúde na UNICAMP desenvolvido por Gabriela Servidone (gabi.servidone@gmail.com), Felipe Labate e Thiago Giachetto de Araujo. Abaixo explicamos um pouco mais sobre o tema, ferramentas utilizadas, a modelagem desenvolvida, como também seus resultados e conclusões. 
+Você está no repositório referente ao projeto final com o tema de **diagnóstico de autismo** da matéria de Ciência e Visualização de Dados em Saúde na UNICAMP desenvolvido por Gabriela Servidone (gabi.servidone@gmail.com), Felipe Labate e Thiago Giachetto de Araujo (thiago.giachetto@gmail.com). Abaixo explicamos um pouco mais sobre o tema, ferramentas utilizadas, a modelagem desenvolvida, como também seus resultados e conclusões. 
 
 ## O Autismo e seu Diagnóstico
 Ainda existem muitas discussões em relação à quem foi o primeiro a descobrir e oficializar as descrições iniciais do autismo, já que, de acordo com Chown [2], Aspenger e Kanner publicaram suas descobertas em anos consecutivos e, à principio, sem ter conhecimento do trabalho do outro. 
@@ -55,16 +55,29 @@ O último passo antes do treinamento dos modelos que serão descritos a seguir, 
 
     aqui eu acho que se falar um pouco dos modelos, da parte de balanceamento 
 
-|feature selection                |classifier                |precision*|recall*|f1-score*|Oversampling|
-|---------------------------------|--------------------------|----------|-------|---------|------------|
-|Random Forest***                 |Support Vector Machine    |0.82      |0.62   |0.67     |N           |
-|Decision Tree Classifier(\*\*\*) |Support Vector Machine    |0.49      |0.50   |0.49     |N           |
-|Decision Tree Classifier(\*\*)   |Logistic Regression       |0.79      |0.64   |0.69     |N           |
-|**Decision Tree Classifier(\*\*\*)** |**Logistic Regression**       |**0.73**      |**0.67**   |**0.69**     |**N**           |
-|                                 |Random Forest(\*\*\*\*)   |0.81      |0.62   |0.67     |N           |
-|                                 |Random Forest(\*\*\*\*)   |0.93      |0.51   |0.51     |Y           |
-|Random Forest(\*\*\*)            |Support Vector Machine    |0.81      |0.62   |0.67     |Y           |
+Observando os dados pode-se verificar que boa parte das questões não eram respondidas por todos os entrevistados, o que implica que temos muitos dados vazios e a quantidade de perguntas realizadas no censo, também é bem grande (744). Além disso, outra dificuldade é que os dados são muito desbalanceados já que das 52129 entrevistas, somente 1345 são de crianças diagnosticadas com ASD ou autismo. 
 
+Para tentar lidar com esses pontos de dificuldade tentamos utilizar algumas estratégias de seleção de variável. Além da retirada das variáveis com baixa correlação e utilizamos algum modelo baseado em árvore para podarmos algumas variáveis e depois usamos outro modelo para fazer a classificação. Também fizemos um teste, utilizando somente Random Forest, mas o resultado foi aquém ao obtido com a etapa de seleção de variável.
+
+Além disso, para lidar com o desbalanceamento, testamos a utilização de oversampling dos dados de crianças diagnosticadas com ASD, adicionando linhas através de um sorteio com reposição dos dados dessa classe, de tal forma que as duas classes tivessem o mesmo número de elementos. 
+
+    Utilizando essa metodologia, observamos que a precisão aumento bastante, porém o f1-score foi bem baixo
+
+
+
+<center>
+
+|feature selection                    |classifier                |precision*|recall*   |f1-score*|Oversampling|
+|-------------------------------------|--------------------------|----------|----------|---------|------------|
+|Random Forest***                     |Support Vector Machine    |0.82      |0.62      |0.67     |N           |
+|Decision Tree Classifier(\*\*\*)     |Support Vector Machine    |0.49      |0.50      |0.49     |N           |
+|Decision Tree Classifier(\*\*)       |Logistic Regression       |0.79      |0.64      |0.69     |N           |
+|**Decision Tree Classifier(\*\*\*)** |**Logistic Regression**   |**0.73**  |**0.67**  |**0.69** |**N**       |
+|                                     |Random Forest(\*\*\*\*)   |0.81      |0.62      |0.67     |N           |
+|                                     |Random Forest(\*\*\*\*)   |0.93      |0.51      |0.51     |Y           |
+|Random Forest(\*\*\*)                |Support Vector Machine    |0.81      |0.62      |0.67     |Y           |
+
+</center>
 (\*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
 (\*\*) with threshold value
 (\*\*\*) with threshold value and max_features 
