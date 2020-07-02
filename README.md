@@ -1,5 +1,6 @@
+
 # Bem-vindo!
-Você está no repositório referente ao projeto final com o tema de **diagnóstico de autismo** da matéria de Ciência e Visualização de Dados em Saúde na UNICAMP desenvolvido por Gabriela Servidone (gabi.servidone@gmail.com), Felipe Labate e Thiago Giachetto de Araujo (thiago.giachetto@gmail.com). Abaixo explicamos um pouco mais sobre o tema, ferramentas utilizadas, a modelagem desenvolvida, como também seus resultados e conclusões. 
+Você está no repositório referente ao projeto final com o tema de **diagnóstico de autismo** da matéria de Ciência e Visualização de Dados em Saúde na UNICAMP desenvolvido por Gabriela Servidone (gabi.servidone@gmail.com), Felipe Labate (correialabbate@gmail.com) e Thiago Giachetto de Araujo (thiago.giachetto@gmail.com). Abaixo explicamos um pouco mais sobre o tema, ferramentas utilizadas, a modelagem desenvolvida, como também seus resultados e conclusões. 
 
 ## O Autismo e seu Diagnóstico
 Ainda existem muitas discussões em relação à quem foi o primeiro a descobrir e oficializar as descrições iniciais do autismo, já que, de acordo com Chown [2], Aspenger e Kanner publicaram suas descobertas em anos consecutivos e, à principio, sem ter conhecimento do trabalho do outro. 
@@ -39,31 +40,23 @@ Uma das características desse banco de dados, é que a pesquisa tem atualizaç�
 
 A base de dados "*2017-2018 National Survey of Children's Health (NSCH)*" tem inicialmente 745 perguntas e 52.129 registros, desses 1.345 registros responderam que "Sim" na pergunta "*Autism ASD Currently*".
   
-### Pré-processamento
+### Pré-processamento e Transformação
 O NSCH tem muitas perguntas em cadeia, ou seja, perguntas que só são respondidas via um fator condicionante da pergunta anterior, que quando não são respondidas, recebem valores como: 90, 95, 96 e 99. Para estes campos, atualizamos seus valores para NaN's. 
 
-Começamos, então, a avaliar quais variáveis utilizaríamos para treinar os modelos de classificação. Porém, como o NSCH é uma pesquisa bem completa, ela já inclui algumas perguntas do *checklist* [6] utilizado para o diagnóstico do TEA. Considerar essas variáveis para o treinamento do modelo, vai contra o objetivo do estudo, que é descobrir se é possível desenvolver um classificador novo, logo, uma primeira limpeza foi retirar variáveis que continham 'screener', 'asd', 'autism', 'sc ', 'cshcn' ou 'indicator' em sua descrição. 
+Começamos, então, a avaliar quais variáveis utilizaríamos para treinar os modelos de classificação. Porém, como o NSCH é uma pesquisa bem completa, ela já inclui algumas perguntas de *screening*  utilizadas para o diagnóstico do TEA. Considerar essas variáveis para o treinamento do modelo, vai contra o objetivo do estudo, que é descobrir se é possível desenvolver um classificador novo, logo, uma primeira limpeza foi retirar variáveis que continham 'screener', 'asd', 'autism', 'sc ', 'cshcn' ou 'indicator' em sua descrição. 
 
-Além disso, calculamos a correlação de Spearman de as todas as variáveis versus a variável "*Autism ASD Currently*". E tal como pode ser visto no gráfico abaixo, uma grande maioria das perguntas tinha uma correlação abaixo de 0.1 com "*Autism ASD Currently*", estas também foram excluídas. 
+Além disso, calculamos a correlação de Spearman de todas as variáveis versus a variável "*Autism ASD Currently*". E tal como pode ser visto no gráfico abaixo, uma grande maioria das perguntas tinha uma correlação abaixo de |0.1| com "*Autism ASD Currently*", estas também foram excluídas. 
     
 ![enter image description here](https://github.com/seoruosa/ds-for-healthcare-final-project-autism/blob/master/assets/correlation.png)
 
-### Transformação
 O último passo antes do treinamento dos modelos que serão descritos a seguir, foi a tradução dos "*not a number*" (NaN) para um valor numérico, "999". 
 
 ### Mineração de Dados
+Além da grande quantidade de questões não respondidas, o que implica em muitos dados vazios, outra dificuldade encontrada ao desenvolver os modelos de classificação é o desbalanceamento dos dados, já que das 52.129 entrevistas, somente 1.345 são de crianças diagnosticadas com ASD ou autismo. 
 
-    aqui eu acho que se falar um pouco dos modelos, da parte de balanceamento 
+Mesmo com a retirada das variáveis no pré-processamento, ainda havia muitas perguntas. Para lidar com isso, utilizamos como estratégias de seleção, modelos baseados em árvore para podar mais variáveis. Depois usamos outro modelo para desenvolver os modelos de classificação. Também fizemos um teste, utilizando somente Random Forest, mas o resultado foi aquém ao obtido com a etapa de seleção de variável.
 
-Observando os dados pode-se verificar que boa parte das questões não eram respondidas por todos os entrevistados, o que implica que temos muitos dados vazios e a quantidade de perguntas realizadas no censo, também é bem grande (744). Além disso, outra dificuldade é que os dados são muito desbalanceados já que das 52129 entrevistas, somente 1345 são de crianças diagnosticadas com ASD ou autismo. 
-
-Para tentar lidar com esses pontos de dificuldade tentamos utilizar algumas estratégias de seleção de variável. Além da retirada das variáveis com baixa correlação e utilizamos algum modelo baseado em árvore para podarmos algumas variáveis e depois usamos outro modelo para fazer a classificação. Também fizemos um teste, utilizando somente Random Forest, mas o resultado foi aquém ao obtido com a etapa de seleção de variável.
-
-Além disso, para lidar com o desbalanceamento, testamos a utilização de oversampling dos dados de crianças diagnosticadas com ASD, adicionando linhas através de um sorteio com reposição dos dados dessa classe, de tal forma que as duas classes tivessem o mesmo número de elementos. 
-
-    Utilizando essa metodologia, observamos que a precisão aumento bastante, porém o f1-score foi bem baixo
-
-
+Além disso, para lidar com o desbalanceamento, testamos a utilização de *oversampling* dos dados de crianças diagnosticadas com ASD, adicionando linhas através de um sorteio com reposição dos dados dessa classe, de tal forma que as duas classes tivessem o mesmo número de elementos. 
 
 <center>
 
