@@ -9,3 +9,7 @@ dataset/child-health-data/
 data/processed/*
 .vscode
 **/__pycache__/*
+data/raw/childhealthdata/
+data/raw/toddler*
+notebooks/G_hom*
+notebooks/open-kaggle-data.ipynb
