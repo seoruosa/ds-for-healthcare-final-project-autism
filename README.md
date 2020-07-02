@@ -26,15 +26,19 @@ Abaixo, listamos as ferramentas utilizadas para o desenvolvimento e organizaçã
 > **Mendeley:** Inicialmente começamos utilizando o Mendeley como um banco de artigos sobre o tema, porém, descontinuamos e focamos utilizar o Google Drive de uma maneira mais centralizada.  
 
 ## A Modelagem
-Outro ferramental teórico utilizado no desenvolvimento desta modelagem, é o método **Knowledge Discovery in Database** (KDD), ou seja, Descoberta de Conhecimento em Banco de Dados. Tal como Usama Fayyad descreve [8], o processo KDD está preocupado em desenvolver metodologias e técnicas para entender os dados, seja quais eles forem, entretanto, comumente utilizado em desenvolvimentos com grande volumetria. 
+Outro ferramental teórico utilizado no desenvolvimento desta modelagem, é o método **Knowledge Discovery in Database** (KDD), ou seja, Descoberta de Conhecimento em Banco de Dados. Tal como Usama Fayyad descreve [8], o processo KDD está preocupado em desenvolver metodologias e técnicas para entender os dados, seja quais eles forem, entretanto, comumente utilizado em desenvolvimentos de grande volumetria de dados. 
 
 O processo KDD é composto por uma série de etapas sequenciais, porém é iterativo, ou seja, a qualquer passo, pode haver retorno a etapas anteriores.  
 
 ![enter image description here](https://github.com/seoruosa/ds-for-healthcare-final-project-autism/blob/master/assets/fayad.png)
 
 ### Seleção
-    falar sobre a base de dados e o que ela é privado
+Para este estudo, estaremos utilizando o *survey* anual da *Data Resource Center for Child & Adolescent Health* (DRC) chamado **National Survey of Children's Health** (NSCH). A pesquisa fornece dados ricos sobre vários aspectos da vida das crianças Norte Americanas, incluindo informações como: saúde física e mental, informações sobre os cuidados de saúde, histórico familiar, sobre sua vizinhança, escola, como também o contexto social da criança está inserida. Para ter acesso aos dados, é necessário acessar este [site](https://www.childhealthdata.org/dataset), e preencher o formulário de aceite dos termos de sigilo de dados. 
 
+Uma das características desse banco de dados, é que a pesquisa tem atualizações em suas perguntas quase anualmente, consequentemente, as informações entre anos, não necessariamente se conversam. Por este motivo, optamos por utilizar um único arquivo disponibilizado pelo DRC que contempla os anos 2017 e 2018 [9].
+
+A base de dados "*2017-2018 National Survey of Children's Health (NSCH)*" tem inicialmente 745 perguntas e 52.129 registros, desses 1.345 registros responderam que "Sim" na pergunta "*Autism ASD Currently*".
+  
 ### Pré-processamento
 
     limpeza das variaveis 
@@ -59,7 +63,7 @@ O processo KDD é composto por uma série de etapas sequenciais, porém é itera
 
 De acordo com o _Diagnostic and Statistical Manual of Mental Disorders_ (DSM-5) [6], o diagnóstico do Transtorno do Espectro Autista é baseado em cinco critérios, apresentados sucintamente a seguir:
 
- 1. “Déficts persistenes na comunicação social e na interação social em múltiplos contextos (...)
+ 1. “Déficts persistentes na comunicação social e na interação social em múltiplos contextos (...)
  2. Padrões restritos e repetitivos de comportamento, interesses ou atividades (...)
  3. Os sintomas devem estar presentes precocemente no período do desenvolvimento (...)
  4. Os sintomas causam prejuízo clinicamente significativo no funcionamento social, profissional ou em outras áreas importantes da vida do indivíduo no presente (...)
@@ -80,7 +84,9 @@ Além disso, muitos indivíduos com transtorno do espectro autista apresentam ta
 
 
 ## Trabalhos Futuros
+No final do século XX começou-se a estudar a relação entre o Transtorno do Espectro Autista e a genética, e foi concluído que o TEA é o distúrbio neuropsiquiátrico com o maior componente genético [10]. Com o passar do tempo foram sendo construídas bases de dados em volta das pesquisas envolvendo essa relação, como por exemplo a [SFARI Gene](https://gene.sfari.org/) que é uma coleção dos genes implicados na suscetibilidade ao autismo.
 
+Uma ideia para um trabalho futuro seria procurar um modelo que combine as perguntas comportamentais, que já são feitas atualmente, com os fatores genéticos de pacientes. Tal modelo poderia ser usado para se obter um melhor, mais preciso e confiável diagnóstico.
 
 ## Agradecimentos
 Agradecemos aos professores André Santanchè (IC-UNICAMP) e Paula Dornhofer (FEEC-UNICAMP) pelo ensino da matéria de Ciência e Visualização de Dados em Saúde que nos proporcionou o desenvolvimento deste projeto. 
@@ -104,9 +110,9 @@ Agradecemos também à Juliana Tortorelli, psicóloga, pelas referências locais
 
 [8] Fayyad, Usama M., Gregory Piatetsky-Shapiro, and Padhraic Smyth. "Knowledge Discovery and Data Mining: Towards a Unifying Framework." _KDD_. Vol. 96. 1996.
 
+[9] Child and Adolescent Health Measurement Initiative (CAHMI) (2017-2018). 2017-2018 National Survey of Children's Health, [(SAS/SPSS/Stata)] Indicator Data Set. Data Resource Center for Child and Adolescent Health supported by Cooperative Agreement U59MC27866 from the U.S. Department of Health and Human Services, Health Resources and Services Administration (HRSA), Maternal and Child Health Bureau (MCHB). Retrieved [09/05/2020] from childhealthdata.org.
 
-
-
+[10] Persico, Antonio M., and Valerio Napolioni. "Autism genetics." *Behavioural brain research* 251 (2013): 95-112.
 
 |                |ASCII                          |HTML                         |
 |----------------|-------------------------------|-----------------------------|
