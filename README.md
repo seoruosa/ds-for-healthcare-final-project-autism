@@ -42,10 +42,9 @@ A base de dados "*2017-2018 National Survey of Children's Health (NSCH)*" tem in
 ### Pré-processamento
 O NSCH tem muitas perguntas em cadeia, ou seja, perguntas que só são respondidas via um fator condicionante da pergunta anterior, que quando não são respondidas, recebem valores como: 90, 95, 96 e 99. Para estes campos, atualizamos seus valores para NaN's. 
 
-Começamos, então, a avaliar quais variáveis utilizaríamos para treinar os modelos de classificação. Porém, como o NSCH é uma pesquisa bem completa, ela já inclui algumas perguntas do *checklist* [6] utilizado para o diagnóstico do TEA. Considerar essas variáveis para o treinamento do modelo, vai contra o objetivo do estudo, que é descobrir se é possível desenvolver um classificador novo, logo, uma primeira limpeza foi retirar variáveis que continham 'screener', 'asd', 'autism', 'sc ', 'cshcn' ou 'indicator' em sua descrição.
+Começamos, então, a avaliar quais variáveis utilizaríamos para treinar os modelos de classificação. Porém, como o NSCH é uma pesquisa bem completa, ela já inclui algumas perguntas do *checklist* [6] utilizado para o diagnóstico do TEA. Considerar essas variáveis para o treinamento do modelo, vai contra o objetivo do estudo, que é descobrir se é possível desenvolver um classificador novo, logo, uma primeira limpeza foi retirar variáveis que continham 'screener', 'asd', 'autism', 'sc ', 'cshcn' ou 'indicator' em sua descrição. 
 
-Tomando como base a pergunta "*Autism ASD Currently*" respondida no NSCH, 
-Com isso, usando como base para a partir da correlação de Spearman
+Além disso, calculamos a correlação de Spearman de as todas as variáveis versus a variável "*Autism ASD Currently*". E tal como pode ser visto no gráfico abaixo, uma grande maioria das perguntas tinha uma correlação abaixo de 0.1 com "*Autism ASD Currently*", estas também foram excluídas. 
     
 ![enter image description here](https://github.com/seoruosa/ds-for-healthcare-final-project-autism/blob/master/assets/correlation.png)
 
@@ -71,9 +70,38 @@ O último passo antes do treinamento dos modelos que serão descritos a seguir, 
 (\*\*\*) with threshold value and max_features 
 (\*\*\*\*) using balanced class weight for training score
 
-    as perguntas que o modelo em negrito teve
+Os valores de *f1-score* que os modelos desenvolvidos obtiveram, mostram que nenhum se destacou positivamente, escolhemos, então, para aprofundarmos as análises o ressaltado em **negrito**.  O treinamento do modelo via *Decision Tree Classifier* e *Logistic Regression* utilizou as perguntas do NSCH abaixo.
+
+ID|Variável|Descrição|
+|--|---------------------------------|--------------------------|
+1| ANYOTHER |  Any Other Condition|
+2| CSHCNComplex_1718 |  Complexity of health care needs|
+3| MENBEVCOV   |Health Insurance - Cover Mental Behavioral Needs|
+4| K4Q38   |Received Special Services - Currently
+5| ARRANGEHC   |Hours Spent Arranging Health Medical Care
+6| K5Q21   |Arrange Or Coordinate Care Extra Help
+7| TOTNONSHCN|   Count of Children without Special Health Care Needs in Household
+8| partic_1718|   Number of organized activities child participates in after school (6-17 years)
+9| EMOSUPADV|   Emotional Support - Health Condition Support Group
+10| SESPLANYR|   Special Education Plan - Age in Years
+11| K4Q26  | Specialist Visit - Problem
+12| K2Q33C|   Anxiety Severity Description
+13| K5Q11 |  Need a Referral - Problem
+14| K8Q32 |  How Often Have You Felt - Child Really Bothers You
+15| K2Q01 |  General Health
+16| C4Q04 |  Frustrated In Efforts to Get Service
+17| K8Q21 |  Share Ideas or Talk About Things That Matter
+18| K7Q85_R|   Stays Calm and In Control When Challenged
+19| cntdiff  | Number of functional difficulties reported from list of 12 different difficulties asked in the survey
+20| ADHDSev_1718|   Parent-rated severity of child's current ADD/ADHD, age 3-17 years
+21| K8Q31   |How Often Have You Felt - Child Hard to Care For
+22| HCEXTENT|   Health Affected Ability - Extent
+23| CondCnt27_1718|   Number of current health conditions reported from a list of 27
+24| speech_1718   |Children who currently have speech or other language disorder, age 3-17 years
+25| MAKEFRIEND   |Difficulty Making or Keeping Friends
 
 ### Interpretação e Avaliação
+Dentre os métodos atuais para identificação do TEA, a Sociedade Brasileira de Pediatria recomenda o  _Modified Checklist for Autism in Toddlers_ (M-CHAT). Ele é um instrumento composto de 23 perguntas [11], um número similar às 25 variáveis de nosso modelo final. Entretanto, 
 
 > **É possível criar um classificador de pessoas autistas via perguntas específicas?**
 
@@ -140,3 +168,5 @@ Agradecemos também à Juliana Tortorelli, psicóloga, pelas referências locais
 [9] Child and Adolescent Health Measurement Initiative (CAHMI) (2017-2018). 2017-2018 National Survey of Children's Health, [(SAS/SPSS/Stata)] Indicator Data Set. Data Resource Center for Child and Adolescent Health supported by Cooperative Agreement U59MC27866 from the U.S. Department of Health and Human Services, Health Resources and Services Administration (HRSA), Maternal and Child Health Bureau (MCHB). Retrieved [09/05/2020] from childhealthdata.org.
 
 [10] Persico, Antonio M., and Valerio Napolioni. "Autism genetics." *Behavioural brain research* 251 (2013): 95-112.
+
+[11] Robins DL, Fein D, Barton ML, Green JA. "The Modified Checklist for Autism in Toddlers: an initial study investigating the early detection of autism and pervasive developmental disorders." *J Autism Dev Disord* 31(2) (2001): 131-44.
