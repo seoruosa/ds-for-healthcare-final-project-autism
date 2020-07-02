@@ -120,3 +120,19 @@ Agradecemos também à Juliana Tortorelli, psicóloga, pelas referências locais
 |Quotes          |`"Isn't this fun?"`            |"Isn't this fun?"            |
 |Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
 
+
+|feature selection                |classifier                |precision*|recall*|f1-score*|Oversampling|
+|---------------------------------|--------------------------|----------|-------|---------|------------|
+|Random Forest***                 |Support Vector Machine    |0.82      |0.62   |0.67     |N           |
+|Decision Tree Classifier(\*\*\*) |Support Vector Machine    |0.49      |0.50   |0.49     |N           |
+|Decision Tree Classifier(\*\*)   |Logistic Regression       |0.79      |0.64   |0.69     |N           |
+|Decision Tree Classifier(\*\*\*) |Logistic Regression       |0.73      |0.67   |0.69     |N           |
+|                                 |Random Forest(\*\*\*\*)   |0.81      |0.62   |0.67     |N           |
+|                                 |Random Forest(\*\*\*\*)   |0.93      |0.51   |0.51     |Y           |
+|Random Forest(\*\*\*)            |Support Vector Machine    |0.81      |0.62   |0.67     |Y           |
+
+
+(\*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
+(\*\*) with threshold value
+(\*\*\*) with threshold value and max_features 
+(\*\*\*\*) using balanced class weight for training score
