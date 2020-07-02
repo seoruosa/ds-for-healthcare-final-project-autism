@@ -57,7 +57,6 @@ Além da grande quantidade de questões não respondidas, o que implica em muito
 Mesmo com a retirada das variáveis no pré-processamento, ainda havia muitas perguntas. Para lidar com isso, utilizamos como estratégias de seleção, modelos baseados em árvore para podar mais variáveis. Depois usamos outro modelo para desenvolver os modelos de classificação. Também fizemos um teste, utilizando somente Random Forest, mas o resultado foi aquém ao obtido com a etapa de seleção de variável.
 
 Além disso, para lidar com o desbalanceamento, testamos a utilização de *oversampling* dos dados de crianças diagnosticadas com ASD, adicionando linhas através de um sorteio com reposição dos dados dessa classe, de tal forma que as duas classes tivessem o mesmo número de elementos. 
-
 <center>
 
 |feature selection                    |classifier                |precision*|recall*   |f1-score*|Oversampling|
