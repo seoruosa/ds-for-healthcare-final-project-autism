@@ -52,11 +52,12 @@ Além disso, calculamos a correlação de Spearman de todas as variáveis versus
 O último passo antes do treinamento dos modelos que serão descritos a seguir, foi a tradução dos "*not a number*" (NaN) para um valor numérico, "999". 
 
 ### Mineração de Dados
-Além da grande quantidade de questões não respondidas, o que implica em muitos dados vazios, outra dificuldade encontrada ao desenvolver os modelos de classificação é o desbalanceamento dos dados, já que das 52.129 entrevistas, somente 1.345 são de crianças diagnosticadas com ASD ou autismo. 
+Além da grande quantidade de questões não respondidas, o que implica em muitos dados vazios, outra dificuldade encontrada ao desenvolver os modelos de classificação é o desbalanceamento dos dados, já que das 52.129 entrevistas, somente 1.345 são de crianças diagnosticadas com TEA ou autismo. 
 
 Mesmo com a retirada das variáveis no pré-processamento, ainda havia muitas perguntas. Para lidar com isso, utilizamos como estratégias de seleção, modelos baseados em árvore para podar mais variáveis. Depois usamos outro modelo para desenvolver os modelos de classificação. Também fizemos um teste, utilizando somente Random Forest, mas o resultado foi aquém ao obtido com a etapa de seleção de variável.
 
-Além disso, para lidar com o desbalanceamento, testamos a utilização de *oversampling* dos dados de crianças diagnosticadas com ASD, adicionando linhas através de um sorteio com reposição dos dados dessa classe, de tal forma que as duas classes tivessem o mesmo número de elementos. 
+Além disso, para lidar com o desbalanceamento, testamos a utilização de *oversampling* [12] dos dados de crianças diagnosticadas com TEA, adicionando linhas através de um sorteio com reposição dos dados dessa classe, de tal forma que as duas classes tivessem o mesmo número de elementos. 
+
 <center>
 
 |feature selection                    |classifier                |precision*|recall*   |f1-score*|Oversampling|
@@ -70,11 +71,11 @@ Além disso, para lidar com o desbalanceamento, testamos a utilização de *over
 |Random Forest(\*\*\*)                |Support Vector Machine    |0.81      |0.62      |0.67     |Y           |
 
 </center>
-(*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
+(\*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
 
-(\**) with threshold value
-(***) with threshold value and max_features 
-(\****) using balanced class weight for training score
+(\*\*) with threshold value
+(\*\*\*) with threshold value and max_features 
+(\*\*\*\*) using balanced class weight for training score
 
 Os valores de *f1-score* que os modelos desenvolvidos obtiveram, mostram que nenhum se destacou positivamente, escolhemos, então, para aprofundarmos as análises o ressaltado em **negrito**.  O treinamento do modelo via *Decision Tree Classifier* e *Logistic Regression* utilizou as perguntas do NSCH abaixo.
 
@@ -145,7 +146,7 @@ O projeto que o grupo realizou contribui muito para o esclarecimento do tema, pr
 ## Trabalhos Futuros
 No final do século XX começou-se a estudar a relação entre o Transtorno do Espectro Autista e a genética, e foi concluído que o TEA é o distúrbio neuropsiquiátrico com o maior componente genético [10]. Com o passar do tempo foram sendo construídas bases de dados em volta das pesquisas envolvendo essa relação, como por exemplo a [SFARI Gene](https://gene.sfari.org/) que é uma coleção dos genes implicados na suscetibilidade ao autismo.
 
-Uma ideia para um trabalho futuro seria procurar um modelo que combine as perguntas comportamentais, que já são feitas atualmente, com os fatores genéticos de pacientes. Como também que considere não classificações binárias do TEA, mas faixas de probabilidade/risco. Tal modelo poderia ser usado para se obter um melhor, mais preciso e confiável diagnóstico
+Uma ideia para um trabalho futuro seria procurar um modelo que combine as perguntas comportamentais, que já são feitas atualmente, com os fatores genéticos de pacientes. Como também que considere não classificações binárias do TEA, mas faixas de probabilidade/risco. Tal modelo poderia ser usado para se obter um melhor, mais preciso e confiável diagnóstico.
 
 ## Agradecimentos
 Agradecemos aos professores André Santanchè (IC-UNICAMP) e Paula Dornhofer (FEEC-UNICAMP) pelo ensino da matéria de Ciência e Visualização de Dados em Saúde que nos proporcionou o desenvolvimento deste projeto. 
@@ -174,3 +175,5 @@ Agradecemos também à Juliana Tortorelli, psicóloga, pelas referências locais
 [10] Persico, Antonio M., and Valerio Napolioni. "Autism genetics." *Behavioural brain research* 251 (2013): 95-112.
 
 [11] Robins DL, Fein D, Barton ML, Green JA. "The Modified Checklist for Autism in Toddlers: an initial study investigating the early detection of autism and pervasive developmental disorders." *J Autism Dev Disord* 31(2) (2001): 131-44.
+
+[12] https://www.jeremyjordan.me/imbalanced-data/. Visited [02/07/2020].
