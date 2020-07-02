@@ -133,6 +133,9 @@ Agradecemos também à Juliana Tortorelli, psicóloga, pelas referências locais
 
 
 (\*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
+
 (\*\*) with threshold value
+
 (\*\*\*) with threshold value and max_features 
+
 (\*\*\*\*) using balanced class weight for training score
