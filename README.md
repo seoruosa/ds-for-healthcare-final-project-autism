@@ -40,30 +40,54 @@ Uma das características desse banco de dados, é que a pesquisa tem atualizaç�
 A base de dados "*2017-2018 National Survey of Children's Health (NSCH)*" tem inicialmente 745 perguntas e 52.129 registros, desses 1.345 registros responderam que "Sim" na pergunta "*Autism ASD Currently*".
   
 ### Pré-processamento
+O NSCH tem muitas perguntas em cadeia, ou seja, perguntas que só são respondidas via um fator condicionante da pergunta anterior, que quando não são respondidas, recebem valores como: 90, 95, 96 e 99. Para estes campos, atualizamos seus valores para NaN's. 
 
-    limpeza das variaveis 
-    falar da correlação
+Começamos, então, a avaliar quais variáveis utilizaríamos para treinar os modelos de classificação. Porém, como o NSCH é uma pesquisa bem completa, ela já inclui algumas perguntas do *checklist* [6] utilizado para o diagnóstico do TEA. Considerar essas variáveis para o treinamento do modelo, vai contra o objetivo do estudo, que é descobrir se é possível desenvolver um classificador novo, logo, uma primeira limpeza foi retirar variáveis que continham 'screener', 'asd', 'autism', 'sc ', 'cshcn' ou 'indicator' em sua descrição.
+
+Tomando como base a pergunta "*Autism ASD Currently*" respondida no NSCH, 
+Com isso, usando como base para a partir da correlação de Spearman
+    
+![enter image description here](https://github.com/seoruosa/ds-for-healthcare-final-project-autism/blob/master/assets/correlation.png)
 
 ### Transformação
-
-    tirando os nan
+O último passo antes do treinamento dos modelos que serão descritos a seguir, foi a tradução dos "*not a number*" (NaN) para um valor numérico, "999". 
 
 ### Mineração de Dados
 
-    metodologia 
+    aqui eu acho que se falar um pouco dos modelos, da parte de balanceamento 
+
+|feature selection                |classifier                |precision*|recall*|f1-score*|Oversampling|
+|---------------------------------|--------------------------|----------|-------|---------|------------|
+|Random Forest***                 |Support Vector Machine    |0.82      |0.62   |0.67     |N           |
+|Decision Tree Classifier(\*\*\*) |Support Vector Machine    |0.49      |0.50   |0.49     |N           |
+|Decision Tree Classifier(\*\*)   |Logistic Regression       |0.79      |0.64   |0.69     |N           |
+|**Decision Tree Classifier(\*\*\*)** |**Logistic Regression**       |**0.73**      |**0.67**   |**0.69**     |**N**           |
+|                                 |Random Forest(\*\*\*\*)   |0.81      |0.62   |0.67     |N           |
+|                                 |Random Forest(\*\*\*\*)   |0.93      |0.51   |0.51     |Y           |
+|Random Forest(\*\*\*)            |Support Vector Machine    |0.81      |0.62   |0.67     |Y           |
+
+(\*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
+(\*\*) with threshold value
+(\*\*\*) with threshold value and max_features 
+(\*\*\*\*) using balanced class weight for training score
+
+    as perguntas que o modelo em negrito teve
 
 ### Interpretação e Avaliação
+
 > **É possível criar um classificador de pessoas autistas via perguntas específicas?**
 
-    falar sobre a comparação com o mchat 
+    sim, porem que nao necessariamente é melhor que o mchat, sobre o que é o mchat 
 
 > **Existe correlação entre as respostas dos formulários e a classificação do paciente?**
+
+    falar que sim, e que foram essas as variaveis que foram utilizadas para o treinamento dos modelos acima 
 
 > **Como especialistas classificam se uma pessoa é ou não autista?**
 
 De acordo com o _Diagnostic and Statistical Manual of Mental Disorders_ (DSM-5) [6], o diagnóstico do Transtorno do Espectro Autista é baseado em cinco critérios, apresentados sucintamente a seguir:
 
- 1. “Déficts persistentes na comunicação social e na interação social em múltiplos contextos (...)
+ 1. “Déficits persistentes na comunicação social e na interação social em múltiplos contextos (...)
  2. Padrões restritos e repetitivos de comportamento, interesses ou atividades (...)
  3. Os sintomas devem estar presentes precocemente no período do desenvolvimento (...)
  4. Os sintomas causam prejuízo clinicamente significativo no funcionamento social, profissional ou em outras áreas importantes da vida do indivíduo no presente (...)
@@ -87,6 +111,9 @@ Além disso, muitos indivíduos com transtorno do espectro autista apresentam ta
 No final do século XX começou-se a estudar a relação entre o Transtorno do Espectro Autista e a genética, e foi concluído que o TEA é o distúrbio neuropsiquiátrico com o maior componente genético [10]. Com o passar do tempo foram sendo construídas bases de dados em volta das pesquisas envolvendo essa relação, como por exemplo a [SFARI Gene](https://gene.sfari.org/) que é uma coleção dos genes implicados na suscetibilidade ao autismo.
 
 Uma ideia para um trabalho futuro seria procurar um modelo que combine as perguntas comportamentais, que já são feitas atualmente, com os fatores genéticos de pacientes. Tal modelo poderia ser usado para se obter um melhor, mais preciso e confiável diagnóstico.
+
+    falar sobre uma comparação com as perguntas desse projeto versus o mchat
+    o modelo te devolver faixas de risco e não um sim/não
 
 ## Agradecimentos
 Agradecemos aos professores André Santanchè (IC-UNICAMP) e Paula Dornhofer (FEEC-UNICAMP) pelo ensino da matéria de Ciência e Visualização de Dados em Saúde que nos proporcionou o desenvolvimento deste projeto. 
@@ -113,29 +140,3 @@ Agradecemos também à Juliana Tortorelli, psicóloga, pelas referências locais
 [9] Child and Adolescent Health Measurement Initiative (CAHMI) (2017-2018). 2017-2018 National Survey of Children's Health, [(SAS/SPSS/Stata)] Indicator Data Set. Data Resource Center for Child and Adolescent Health supported by Cooperative Agreement U59MC27866 from the U.S. Department of Health and Human Services, Health Resources and Services Administration (HRSA), Maternal and Child Health Bureau (MCHB). Retrieved [09/05/2020] from childhealthdata.org.
 
 [10] Persico, Antonio M., and Valerio Napolioni. "Autism genetics." *Behavioural brain research* 251 (2013): 95-112.
-
-|                |ASCII                          |HTML                         |
-|----------------|-------------------------------|-----------------------------|
-|Single backticks|`'Isn't this fun?'`            |'Isn't this fun?'            |
-|Quotes          |`"Isn't this fun?"`            |"Isn't this fun?"            |
-|Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
-
-
-|feature selection                |classifier                |precision*|recall*|f1-score*|Oversampling|
-|---------------------------------|--------------------------|----------|-------|---------|------------|
-|Random Forest***                 |Support Vector Machine    |0.82      |0.62   |0.67     |N           |
-|Decision Tree Classifier(\*\*\*) |Support Vector Machine    |0.49      |0.50   |0.49     |N           |
-|Decision Tree Classifier(\*\*)   |Logistic Regression       |0.79      |0.64   |0.69     |N           |
-|Decision Tree Classifier(\*\*\*) |Logistic Regression       |0.73      |0.67   |0.69     |N           |
-|                                 |Random Forest(\*\*\*\*)   |0.81      |0.62   |0.67     |N           |
-|                                 |Random Forest(\*\*\*\*)   |0.93      |0.51   |0.51     |Y           |
-|Random Forest(\*\*\*)            |Support Vector Machine    |0.81      |0.62   |0.67     |Y           |
-
-
-(\*) Macro average ([link](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score))
-
-(\*\*) with threshold value
-
-(\*\*\*) with threshold value and max_features 
-
-(\*\*\*\*) using balanced class weight for training score
