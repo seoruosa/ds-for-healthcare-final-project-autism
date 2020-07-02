@@ -115,16 +115,16 @@ ID|Variável|Descrição|
 25| MAKEFRIEND   |Difficulty Making or Keeping Friends
 
 ### Interpretação e Avaliação
-Dentre os métodos atuais para identificação do TEA, a Sociedade Brasileira de Pediatria recomenda o  _Modified Checklist for Autism in Toddlers_ (M-CHAT). Ele é um instrumento composto de 23 perguntas [11], um número similar às 25 variáveis de nosso modelo final. Entretanto, 
+Dentre os métodos atuais para identificação do TEA, a Sociedade Brasileira de Pediatria recomenda o  _Modified Checklist for Autism in Toddlers_ (M-CHAT). Ele é um instrumento composto de 23 perguntas [11], um número similar às 25 variáveis de nosso modelo final. Entretanto, numa comparação de informações consideradas no modelo desenvolvido e no M-CHAT, vemos poucas similaridades, dentre elas temos as variáveis "K8Q21" e "MAKEFRIEND". 
 
 > **É possível criar um classificador de pessoas autistas via perguntas específicas?**
 
-    sim, porem que nao necessariamente é melhor que o mchat, sobre o que é o mchat 
+Não. Para ser confiável e preciso, segundo o DSM-5 [6], o diagnóstico do Transtorno do Espectro Autista precisa de mais de uma fonte de informação. Na realidade, o questionário é uma poderosa ferramenta que ajuda o especialista na confirmação do diagnóstico. Tomando o exemplo do mais conhecido e usado, o M-CHAT, não temos um classificador de que se a pessoa vai desenvolver ou não o TEA, e sim faixas de risco indicando a possibilidade do desenvolvimento do autismo, cujo resultado deve ainda ser combinado com outros fatores na análise feita pelo especialista.
 
 > **Existe correlação entre as respostas dos formulários e a classificação do paciente?**
 
-    falar que sim, e que foram essas as variaveis que foram utilizadas para o treinamento dos modelos acima 
-
+ Sim. Verificamos a correlação entre as respostas dos formulários e a classificação do paciente através da correlação de Spearman. Os modelos utilizados foram treinados com as variáveis cujo valor da correlação, em módulo, é maior que 0.1 e que não tinham relação com perguntas já utilizadas no *checklist* para o diagnóstico do TEA.
+ 
 > **Como especialistas classificam se uma pessoa é ou não autista?**
 
 De acordo com o _Diagnostic and Statistical Manual of Mental Disorders_ (DSM-5) [6], o diagnóstico do Transtorno do Espectro Autista é baseado em cinco critérios, apresentados sucintamente a seguir:
@@ -143,19 +143,17 @@ Além disso, muitos indivíduos com transtorno do espectro autista apresentam ta
 
 ![Cronograma Inicial](https://github.com/seoruosa/ds-for-healthcare-final-project-autism/blob/master/assets/schedule.jpeg)
 
-**Lições Aprendidas:**
+**Lições Aprendidas:** Primeiramente temos o conhecimento teórico e técnico obtido pelos membros do grupo. Além disso, foi interessante observar que mesmo seguindo o mesmo processo de descoberta de conhecimento útil de dados (KDD) e as mesmas variáveis como base, obtivemos modelos diferentes. Isso mostra a grande diversidade de abordagens que podemos usar em algum problema, seja modificando os modelos escolhidos quanto escolhendo diferentes variáveis para análise.
 
 ## Comentário da Psicóloga
+"Este projeto apresentou de forma clara e objetiva o apanhado de informações que estão disponíveis na área de pesquisa a respeito do TEA, dando atenção ao contexto biopsicossocial do transtorno. Ainda é difícil realizar o diagnóstico precoce do espectro do autismo por muitos fatores técnicos, científicos e sociais, e a pesquisa apresentou ótimas contribuições para que este diagnóstico seja ainda mais preciso.
 
-
+O projeto que o grupo realizou contribui muito para o esclarecimento do tema, principalmente para as pessoas que desconhecem sobre ele, gerando visibilidade positiva, além do incentivo necessário para novas pesquisas sobre TEA no meio acadêmico brasileiro. Sendo assim, se eu pudesse falar em nome da minha classe, psicólogos, quero agradecer pela responsabilidade com o tema e pela contribuição técnica-científica." - **Psicóloga Juliana Arielo Tortorelli CRP 06/142415**
 
 ## Trabalhos Futuros
 No final do século XX começou-se a estudar a relação entre o Transtorno do Espectro Autista e a genética, e foi concluído que o TEA é o distúrbio neuropsiquiátrico com o maior componente genético [10]. Com o passar do tempo foram sendo construídas bases de dados em volta das pesquisas envolvendo essa relação, como por exemplo a [SFARI Gene](https://gene.sfari.org/) que é uma coleção dos genes implicados na suscetibilidade ao autismo.
 
-Uma ideia para um trabalho futuro seria procurar um modelo que combine as perguntas comportamentais, que já são feitas atualmente, com os fatores genéticos de pacientes. Tal modelo poderia ser usado para se obter um melhor, mais preciso e confiável diagnóstico.
-
-    falar sobre uma comparação com as perguntas desse projeto versus o mchat
-    o modelo te devolver faixas de risco e não um sim/não
+Uma ideia para um trabalho futuro seria procurar um modelo que combine as perguntas comportamentais, que já são feitas atualmente, com os fatores genéticos de pacientes. Como também que considere não classificações binárias do TEA, mas faixas de probabilidade/risco. Tal modelo poderia ser usado para se obter um melhor, mais preciso e confiável diagnóstico
 
 ## Agradecimentos
 Agradecemos aos professores André Santanchè (IC-UNICAMP) e Paula Dornhofer (FEEC-UNICAMP) pelo ensino da matéria de Ciência e Visualização de Dados em Saúde que nos proporcionou o desenvolvimento deste projeto. 
