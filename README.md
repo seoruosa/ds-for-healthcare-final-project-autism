@@ -6,13 +6,15 @@ Ainda existem muitas discussões em relação à quem foi o primeiro a descobrir
 
 Independentemente de quem foi o primeiro, ambos continuaram seus estudos na área, e em 1943, Kanner publicou "Autistic Disturbances of Affective Contact" [1] com comentários sobre as 11 crianças com semelhanças comportamentais marcantes que havia encontrado até então, sendo Donald Gray Triplett a primeira criança diagnosticada oficialmente como autista [3].  
 
-Apesar de atualmente haverem muitos estudos que buscam correlacionar fatores genéticos e o autismo [4,5], desde Triplett, o diagnóstico continua puramente clínico, se baseando completamente no comportamental do indivíduo. Para acompanhar 
+Em 1952, foi publicada a primeira versão Diagnóstico e Estatístico de Transtornos Mentais (DSM-1) [7], documento que trouxe uma uniformização do sistema de classificação dos transtornos mentais, tornando-se um manual para profissionais da área, incluindo, então, a primeira definição oficial de como diagnosticar o autismo. 
 
-    Por haver tamanha diversidade na expressão clínica desse quadro, a versão mais recente do Manual Diagnóstico e Estatístico de Transtornos Mentais (DSM-V, 2013), da Associação Americana de Psiquiatria, optou por usar a palavra “ESPECTRO” na definição desta condição – TRANSTORNO DO ESPECTRO DO AUTISMO – TEA.
-    O maior estudo realizado sobre as causas do TEA revelou que os fatores ambientais são tão importantes quanto a genética para o desenvolvimento do transtorno. Isto contrariou estimativas anteriores, que atribuíam à genética de 80% a 90% do risco do desenvolvimento de TEA. Foram acompanhadas mais de 2 milhões de pessoas na Suécia, entre 1982 e 2006, com avaliação de fatores como complicações no parto, infecções sofridas pela mãe e o uso de drogas antes e durante a gravidez.
-    **Objetivo do Estudo:** Inicialmente nosso macro objetivo era prover uma nova ferramenta aos profissionais da área que os ajudaria num diagnóstico mais eficaz. Porém,** 
+De edição em edição, as classificações de transtornos mentais são atualizadas, e, por haver uma grande diversidade na expressão clínica de indivíduos autistas, em sua quinta versão, o Diagnóstico e Estatístico de Transtornos Mentais [6] optou por usar a palavra "*espectro*" para a definição de 2014, agora conhecida como: **transtorno do espectro do autismo** (TEA). 
 
-# Ferramentas Utilizadas
+Além disso, vale ressaltar que mesmo em 2014 onde já haviam estudos que buscavam correlacionar fatores genéticos com o autismo [4,5], desde Triplett, o diagnóstico continua puramente clínico, se baseando completamente no comportamental do indivíduo.  
+
+Com base nos fatos acima, nosso estudo tem como objetivo inicial **prover uma nova ferramenta aos profissionais da área que os ajudaria num diagnóstico mais eficaz**.
+
+## Ferramentas Utilizadas
 Abaixo, listamos as ferramentas utilizadas para o desenvolvimento e organização de nossa equipe de projeto. 
 
  - **Google Drive:** O Google Drive foi utilizado como um banco geral de informações e arquivos, nele foram armazenados os artigos relativos ao tema, pelo Drive temos o acesso aos notebooks do Google Colaboratory, à nossa base de dados privada, entre outros arquivos.  
@@ -23,34 +25,37 @@ Abaixo, listamos as ferramentas utilizadas para o desenvolvimento e organizaçã
 
 > **Mendeley:** Inicialmente começamos utilizando o Mendeley como um banco de artigos sobre o tema, porém, descontinuamos e focamos utilizar o Google Drive de uma maneira mais centralizada.  
 
-# A Modelagem
-#### Base de Dados
+## A Modelagem
+Outro ferramental teórico utilizado no desenvolvimento desta modelagem, é o método **Knowledge Discovery in Database** (KDD), ou seja, Descoberta de Conhecimento em Banco de Dados. Tal como Usama Fayyad descreve [8], o processo KDD está preocupado em desenvolver metodologias e técnicas para entender os dados, seja quais eles forem, entretanto, comumente utilizado em desenvolvimentos com grande volumetria. 
 
-#### Abordagem Adotada
-#### Metodologia?
-|                |ASCII                          |HTML                         |
-|----------------|-------------------------------|-----------------------------|
-|Single backticks|`'Isn't this fun?'`            |'Isn't this fun?'            |
-|Quotes          |`"Isn't this fun?"`            |"Isn't this fun?"            |
-|Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+O processo KDD é composto por uma série de etapas sequenciais, porém é iterativo, ou seja, a qualquer passo, pode haver retorno a etapas anteriores.  
 
-# Resultados
+![enter image description here](https://github.com/seoruosa/ds-for-healthcare-final-project-autism/blob/master/assets/fayad.png)
 
-#### Dificuldades Enfrentadas
-De maneira geral, tivemos duas dificuldades maiores durante a execução do projeto. A primeira delas foi causada diretamente pela escolha da base de dados, porque, pelos motivos e detalhamentos já descritos acima, a base de dados utilizada neste estudo é privada. Logo, fomos limitados a não utilizar plataformas públicas de desenvolvimento, como Binder, que era a ideia inicial.  O segundo ponto que tivemos dificuldades, foi encontrar psicólogos ou psicologas especialistas em autismo para nos auxiliar nos entendimentos iniciais e conclusões. 
+### Seleção
+    falar sobre a base de dados e o que ela é privado
 
-#### Mudanças de Percurso
-Ao início do projeto, montamos um cronograma geral das macro atividades a serem feitas, tal como imagem abaixo. Nota-se que planejamos que as tarefas fossem feitas de uma maneira linear dentre as semanas, porém, por motivos externos e particulares, infelizmente não conseguimos seguir nosso planejamento à risca, e mudamos nosso cronograma algumas vezes dentro deste período. 
+### Pré-processamento
 
-![Cronograma Inicial](https://github.com/seoruosa/ds-for-healthcare-final-project-autism/blob/master/assets/schedule.jpeg)
+    limpeza das variaveis 
+    falar da correlação
 
-# Conclusões Gerais
+### Transformação
 
-> É possível criar um classificador de pessoas autistas via perguntas específicas?
+    tirando os nan
 
-> Existe correlação entre as respostas dos formulários e a classificação do paciente?
+### Mineração de Dados
 
-> Como especialistas classificam se uma pessoa é ou não autista?
+    metodologia 
+
+### Interpretação e Avaliação
+> **É possível criar um classificador de pessoas autistas via perguntas específicas?**
+
+    falar sobre a comparação com o mchat 
+
+> **Existe correlação entre as respostas dos formulários e a classificação do paciente?**
+
+> **Como especialistas classificam se uma pessoa é ou não autista?**
 
 De acordo com o _Diagnostic and Statistical Manual of Mental Disorders_ (DSM-5) [6], o diagnóstico do Transtorno do Espectro Autista é baseado em cinco critérios, apresentados sucintamente a seguir:
 
@@ -62,20 +67,27 @@ De acordo com o _Diagnostic and Statistical Manual of Mental Disorders_ (DSM-5) 
 
 Além disso, muitos indivíduos com transtorno do espectro autista apresentam também o comprometimento da linguagem, da capacidade intelectual e de habilidades funcionais. Os diagnósticos - quando baseados em múltiplas fontes de informação, como observações clínicas, relatos de cuidadores, e quando possível, de autorrelato – se tornam mais confiáveis e válidos.
 
-#### Lições Aprendidas
+**Dificuldades Enfrentadas:** De maneira geral, tivemos duas dificuldades maiores durante a execução do projeto. A primeira delas foi causada diretamente pela escolha da base de dados, porque, pelos motivos e detalhamentos já descritos acima, a base de dados utilizada neste estudo é privada. Logo, fomos limitados a não utilizar plataformas públicas de desenvolvimento, como Binder, que era a ideia inicial.  O segundo ponto que tivemos dificuldades, foi encontrar psicólogos ou psicologas especialistas em autismo para nos auxiliar nos entendimentos iniciais e conclusões. 
 
-#### Comentário da Psicóloga
+**Mudanças de Percurso:** Ao início do projeto, montamos um cronograma geral das macro atividades a serem feitas, tal como imagem abaixo. Nota-se que planejamos que as tarefas fossem feitas de uma maneira linear dentre as semanas, porém, por motivos externos e particulares, infelizmente não conseguimos seguir nosso planejamento à risca, e mudamos nosso cronograma algumas vezes dentro deste período. 
+
+![Cronograma Inicial](https://github.com/seoruosa/ds-for-healthcare-final-project-autism/blob/master/assets/schedule.jpeg)
+
+**Lições Aprendidas:**
+
+## Comentário da Psicóloga
 
 
-# Trabalhos Futuros
+
+## Trabalhos Futuros
 
 
-# Agradecimentos
+## Agradecimentos
 Agradecemos aos professores André Santanchè (IC-UNICAMP) e Paula Dornhofer (FEEC-UNICAMP) pelo ensino da matéria de Ciência e Visualização de Dados em Saúde que nos proporcionou o desenvolvimento deste projeto. 
 
 Agradecemos também à Juliana Tortorelli, psicóloga, pelas referências locais de tratamento de autismo e participação. 
 
-# Referências
+## Referências
 [1] Kanner, Leo. "Autistic disturbances of affective contact." _Nervous child_ 2.3 (1943): 217-250.
 
 [2] Chown, Nick, and Liz Hughes. "History and first descriptions of autism: Asperger versus Kanner revisited." _Journal of autism and developmental disorders_ 46.6 (2016): 2270-2272.
@@ -86,4 +98,19 @@ Agradecemos também à Juliana Tortorelli, psicóloga, pelas referências locais
 
 [5] Ronald, Angelica, et al. "Evidence for overlapping genetic influences on autistic and ADHD behaviours in a community twin sample." _Journal of Child psychology and Psychiatry_ 49.5 (2008): 535-542.
 
-[6] Associação Americana de Psiquiatria, APA. DSM V – Manual diagnóstico e estatístico de transtornos mentais. 5. ed.rev. – Porto Alegre: Artmed, 2014
+[6] Associação Americana de Psiquiatria, APA. DSM V – Manual diagnóstico e estatístico de transtornos mentais. 5. ed.rev. – Porto Alegre: *Artmed*, 2014.
+
+[7] Associação Americana de Psiquiatria, APA. DSM I – Manual diagnóstico e estatístico de transtornos mentais. 1. ed.rev. –Washington, DC: *American Psychiatric Association,* 1952.
+
+[8] Fayyad, Usama M., Gregory Piatetsky-Shapiro, and Padhraic Smyth. "Knowledge Discovery and Data Mining: Towards a Unifying Framework." _KDD_. Vol. 96. 1996.
+
+
+
+
+
+|                |ASCII                          |HTML                         |
+|----------------|-------------------------------|-----------------------------|
+|Single backticks|`'Isn't this fun?'`            |'Isn't this fun?'            |
+|Quotes          |`"Isn't this fun?"`            |"Isn't this fun?"            |
+|Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
+
